@@ -2,4 +2,4 @@
 *~
 *.po
 .idea
-
+/vendor/

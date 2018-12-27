@@ -64,6 +64,7 @@ $gettext->setFileExtensions(array('js', 'tpl', 'php'))
     ->setDirectory($defaults['dir']) // sets directory to be scanned
     ->setFileName($defaults['out']) // sets path output filename
     ->setVerboseOn() // sets verbose output on
+		->setRemoveOld(false) // sets remove old
     ->setMethodPrefixes(array('_t', '-\>t')); // set method prefixed to be scanned for
 
 $lines = $gettext->generate();

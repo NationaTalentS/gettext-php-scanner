@@ -128,6 +128,7 @@ class Scanner
 
         if($this->verbose) {
             echo $file . "\n";
+						echo $this->pattern . "\n";
         }
 
         $lines = array();
@@ -141,7 +142,9 @@ class Scanner
             // read each line and trim off leading/trailing whitespace
             if ($s = trim(fgets($fh, 16384))) {
                 // match the line to the pattern
-
+// echo "\n preg_match_all \n";
+// var_dump(preg_match_all($this->pattern, $s, $matches));
+// echo "\n";
                 if (preg_match_all($this->pattern, $s, $matches)) {
                     //$matches[0] -> full pattern
                     //$matches[1] -> method __ OR _e
@@ -154,13 +157,14 @@ class Scanner
 
                     //Add the lines without duplicate values
                     foreach ($matches[3] as $k => $text) {
+											echo $text."\n";
                         if (!in_array($text, $lines)) {
                             $lines[] = $text;
                         }
                     }
                 } else {
                     // complain if the line didn't match the pattern 
-                    error_log("Can't parse $file line $i: $s");
+                    // error_log("Can't parse $file line $i: $s");
                 }
             }
             $i++;
