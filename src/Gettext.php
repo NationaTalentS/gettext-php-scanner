@@ -219,9 +219,9 @@ class Gettext {
    *
    * @return Gettext
    */
-  public function setRemoveOld($keep = false)
+  public function setRemoveOld($remove = false)
   {
-      $this->keep = ($keep===true);
+      $this->keep = ($remove===false);
       return $this;
   }
 	
